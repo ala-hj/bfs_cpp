@@ -34,7 +34,7 @@ public:
         adjList = new deque<int>[n];
     }
     // The idea of edge is telling where the vertix ( node ) is connected to. X -> Y
-    void getEdges(int x, int y){
+    void addEdge(int x, int y){
         adjList[x].push_back(y);
         adjList[y].push_back(x);
     }
@@ -73,14 +73,24 @@ public:
         }
     }
 };
+
 int main(){
-    BFS g(4);
-    g.getEdges(0,1);
-    g.getEdges(0,2);
-    g.getEdges(1,2);
-    g.getEdges(2,0);
-    g.getEdges(2,3);
-    g.getEdges(3,3);
-    g.BFSoperation(2);
+
+
+    BFS g(7); 
+    g.addEdge(1, 2);
+    g.addEdge(1, 3);
+    g.addEdge(2, 1); 
+    g.addEdge(2, 4);
+    g.addEdge(3, 1);
+    g.addEdge(3, 4);
+    g.addEdge(4, 2);
+    g.addEdge(4, 3);
+    g.addEdge(4, 5);
+    g.addEdge(4, 6);
+    g.addEdge(5, 4);
+    g.addEdge(6, 4);
+    // It should display this: 4,2,3,5,6,1 if all Graph is undirected means each nodes are reaching to each other
+    g.BFSoperation(4);
     cout << endl;
 }
